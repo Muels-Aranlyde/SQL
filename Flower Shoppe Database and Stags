@@ -1,0 +1,33 @@
+--Create a table to track inventory of a flower shop with columns for name, retail price, number of each item in stock, and when to reorder each item
+CREATE TABLE flower_shoppe (id INTEGER PRIMARY KEY, name TEXT, price REAL, in_stock INTEGER, reorder_at INTEGER);
+
+--Populates table with the values for 15 different flowers in stock
+INSERT INTO flower_shoppe VALUES (1, 'peonies', 9.95, 17, 5);
+INSERT INTO flower_shoppe VALUES (2, 'roses', 15.99, 12, 4);
+INSERT INTO flower_shoppe VALUES (3, 'daffodils', 7.75, 13, 6);
+INSERT INTO flower_shoppe VALUES (4, 'carnations', 12.50, 4, 5);
+INSERT INTO flower_shoppe VALUES (5, 'irises', 8.89, 13, 7);
+INSERT INTO flower_shoppe VALUES (6, 'tulips', 11.35, 8, 6);
+INSERT INTO flower_shoppe VALUES (7, 'daisies', 7.99, 3, 6);
+INSERT INTO flower_shoppe VALUES (8, 'asters', 17.99, 8, 7);
+INSERT INTO flower_shoppe VALUES (9, 'azaleas', 6.95, 12, 6);
+INSERT INTO flower_shoppe VALUES (10, 'begonias', 12.50, 13, 5);
+INSERT INTO flower_shoppe VALUES (11, 'calendulas', 8.89, 11, 5);
+INSERT INTO flower_shoppe VALUES (12, 'dahlias', 14.95, 4, 4);
+INSERT INTO flower_shoppe VALUES (13, 'foxgloves', 7.99, 6, 5);
+INSERT INTO flower_shoppe VALUES (14, 'hollyhocks', 11.50, 13, 8);
+INSERT INTO flower_shoppe VALUES (15, 'hyacinths', 13.95, 12, 7);
+
+--List the name and price of all items in stock in ascending order
+SELECT name, price 
+FROM flower_shoppe 
+ORDER BY price;
+
+--Returns a true value(1) if stock is at or below the level to trigger a reorder
+SELECT name, in_stock <= reorder_at FROM flower_shoppe;
+
+--Returns the total number of items currently in stock
+SELECT SUM(in_stock) FROM flower_shoppe;
+
+--Returns the total retail value of each type of flower currently in stock
+SELECT name, (in_stock*price) FROM flower_shoppe;
